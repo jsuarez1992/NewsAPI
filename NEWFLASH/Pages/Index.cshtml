@@ -1,9 +1,8 @@
 ﻿@page
-@model IndexModel
+@model NEWFLASH.Pages.IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
-
 
 <div style="padding-left: 80px; padding-right: 80px;">
     <div class="text-center text-xxl-start mt-2">
@@ -12,86 +11,43 @@
 
         <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="card" style="width: 18rem;">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
+                @{
+                    bool isFirst = true;
+                    if (Model.NewsArticles?.Articles != null)
+                    {
+                        int articlesPerPage = 4; // Change this to adjust the number of articles per page
+                        int totalArticles = Model.NewsArticles.Articles.Count;
+                        int pageCount = (int)Math.Ceiling((double)totalArticles / articlesPerPage);
 
-                        <div class="col-lg-4">
-                            <div class="card" style="width: 18rem;">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                        for (int i = 0; i < pageCount; i++)
+                        {
+                            <div class="carousel-item @(isFirst ? "active" : "")">
+                                <div class="row">
+                                    @for (int j = i * articlesPerPage; j < Math.Min((i + 1) * articlesPerPage, totalArticles); j++)
+                                    {
+                                        var article = Model.NewsArticles.Articles[j];
+                                        <div class="col-lg-3">
+                                            <div class="card mb-4">
+                                                <img src="@article.UrlToImage" class="card-img-top" alt="@article.Title">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">@article.Title</h5>
+                                                    <p class="card-text">@article.Description</p>
+                                                    <a href="@article.Url" class="btn btn-primary" target="_blank">Read more</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <div class="card" style="width: 18rem;">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="card" style="width: 18rem;">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <div class="card" style="width: 18rem;">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <div class="card" style="width: 18rem;">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            isFirst = false; // Ensures that only the first item has the 'active' class
+                        }
+                    }
+                }
             </div>
-
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
@@ -100,18 +56,14 @@
     </div>
 </div>
 
-
 <style>
     body {
         background-color: white;
     }
 </style>
 
-
 <script src="~/js/app.js"></script>
-
 <script src="~/js/datatables.js"></script>
-
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Datatables Orders
