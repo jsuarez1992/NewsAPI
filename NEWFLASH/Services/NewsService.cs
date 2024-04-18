@@ -35,7 +35,10 @@ namespace NEWFLASH.Services
             }
 
             var content = await response.Content.ReadAsStringAsync();
-            var newsApiResponse = JsonConvert.DeserializeObject<NewsApiResponse>(content);
+            var newsApiResponse = JsonConvert.DeserializeObject<NewsApiResponse>(content, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore // Ignore null values during deserialization
+            });
             return newsApiResponse;
         }
 
