@@ -4,10 +4,11 @@ This is a web application built with .NET6, and uses the [News API](https://news
 
 ## Features
 
-- **Display:** The current news are displayed to the user in an interactive way.
-- **xxx:** Users are able to go straight to the news source by clicking any of the cards.
-- **Pagination:** Results are paginated, allowing users to navigate through multiple pages of news articles.
-- **Responsive Design:** The app is responsive and works well on both desktop and mobile devices.
+- **Display:** The current news are displayed to the user in an interactive way.  
+- **xxx:** Users are able to go straight to the news source by clicking any of the cards.  
+- **Search by source:** User can search news from sites like BBC, CNN, and so on.  
+- **Search by keyword:** User can search news related to a certain topic like "agriculture", "eclipse" and so on.
+- **Responsive Design:** The app is responsive and works well on both desktop and mobile devices.  
 
 ## Languages and Technologies Used
 
