@@ -42,6 +42,31 @@ namespace NEWFLASH.Services
             return newsApiResponse;
         }
 
+        public async Task<NewsApiResponse> SearchNewsAsync(string query)
+        {
+            var apiKey = _configuration["NewsApi:ApiKey"];
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://newsapi.org/v2/everything?q={query}&apiKey={apiKey}");
+
+            // Set User-Agent header
+            request.Headers.Add("User-Agent", "NEWFLASH-NewsClient/1.0");
+
+            var response = await _httpClient.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                throw new HttpRequestException($"News API request failed with status code {response.StatusCode} and content: {errorContent}");
+            }
+
+            var content = await response.Content.ReadAsStringAsync();
+            var newsApiResponse = JsonConvert.DeserializeObject<NewsApiResponse>(content, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore // Ignore null values during deserialization
+            });
+            return newsApiResponse;
+        }
+
+
         // Define your models here
         public class NewsApiResponse
         {
