@@ -20,10 +20,19 @@ namespace NEWFLASH.Pages
             _newsService = newsService;
         }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string query)
         {
-            // This will now return a NewsApiResponse object
-            NewsArticles = await _newsService.GetLatestNewsAsync();
+            if (!string.IsNullOrEmpty(query))
+            {
+                // Perform search based on the query
+                NewsArticles = await _newsService.SearchNewsAsync(query);
+            }
+            else
+            {
+                // Get latest news
+                NewsArticles = await _newsService.GetLatestNewsAsync();
+            }
         }
+
     }
 }
