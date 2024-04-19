@@ -7,7 +7,15 @@
 <div style="padding-left: 80px; padding-right: 80px;">
     <div class="text-center text-xxl-start">
         <h1 class="display-5 text-primary fw-light mb-3">WORLD WIDE NEWS</h1>
-        <span class="badge text-bg-primary mb-4">Real news. Anytime.</span>
+        <div class="btn-group mb-3" role="group" aria-label="Category Buttons">
+            <button type="button" class="btn btn-outline-info" onclick="searchByCategory('business')">Business</button>
+            <button type="button" class="btn btn-outline-info" onclick="searchByCategory('entertainment')">Entertainment</button>
+            <button type="button" class="btn btn-outline-info" onclick="searchByCategory('general')">General</button>
+            <button type="button" class="btn btn-outline-info" onclick="searchByCategory('health')">Health</button>
+            <button type="button" class="btn btn-outline-info" onclick="searchByCategory('science')">Science</button>
+            <button type="button" class="btn btn-outline-info" onclick="searchByCategory('sports')">Sports</button>
+            <button type="button" class="btn btn-outline-info" onclick="searchByCategory('technology')">Technology</button>
+        </div>
 
         <form method="get">
             <div class="input-group mb-3">
@@ -68,7 +76,7 @@
 
 
 @functions {
-    public string TruncateDescription(string description, int wordLimit)
+    public string TruncateDescription(string description, int wordLimit)  //Function to limit the words in the description
     {
         if (string.IsNullOrEmpty(description))
         {
@@ -93,16 +101,12 @@
 </style>
 
 <script src="~/js/app.js"></script>
-<script src="~/js/datatables.js"></script>
+
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Datatables Orders
-        $("#datatables-orders").DataTable({
-            responsive: true,
-            aoColumnDefs: [{
-                bSortable: false,
-                aTargets: [-1]
-            }]
-        });
-    });
+    // Function for Category Search
+    function searchByCategory(category) {
+        var queryInput = document.querySelector('input[name="query"]');
+        queryInput.value = category;
+        document.querySelector('form').submit();
+    }
 </script>
