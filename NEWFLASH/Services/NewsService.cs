@@ -18,10 +18,17 @@ namespace NEWFLASH.Services
             _configuration = configuration;
         }
 
-        public async Task<NewsApiResponse> GetLatestNewsAsync()
+        public async Task<NewsApiResponse> GetLatestNewsAsync(string keyword = null)
         {
             var apiKey = _configuration["NewsApi:ApiKey"];
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://newsapi.org/v2/top-headlines?country=us&apiKey={apiKey}");
+            string apiUrl = "https://newsapi.org/v2/top-headlines?country=us&apiKey=" + apiKey;
+            //For search with keyword like "agriculture" or "farm"
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                apiUrl += "&q=" + keyword;
+            }
+
+            var request = new HttpRequestMessage(HttpMethod.Get, apiUrl);
 
             // Set User-Agent header
             request.Headers.Add("User-Agent", "NEWFLASH-NewsClient/1.0");
