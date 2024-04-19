@@ -5,7 +5,7 @@
 }
 
 <div style="padding-left: 80px; padding-right: 80px;">
-    <div class="text-center text-xxl-start">
+    <div class="text-center text-xxl-center">
         <h1 class="display-5 text-primary fw-light mb-3">WORLD WIDE NEWS</h1>
         <div class="btn-group mb-3" role="group" aria-label="Category Buttons">
             <button type="button" class="btn btn-outline-info" onclick="searchByCategory('business')">Business</button>
@@ -47,8 +47,8 @@
                                                 <div class="card mb-4">
                                                     <img src="@article.UrlToImage" class="card-img-top" alt="@article.Title">
                                                     <div class="card-body">
-                                                        <h5 class="card-title">@article.Title</h5>
-                                                        <p class="card-text">@TruncateDescription(article.Description, 15)</p>
+                                                        <h5 class="card-title">@TruncateTitle(article.Title, 10)</h5>
+                                                        <p class="card-text">@TruncateDescription(article.Description, 10)</p>
                                                         <a href="@article.Url" class="btn btn-primary" target="_blank">Read more</a>
                                                     </div>
                                                 </div>
@@ -87,6 +87,21 @@
         if (words.Length <= wordLimit)
         {
             return description;
+        }
+
+        return string.Join(' ', words.Take(wordLimit)) + "...";
+    }
+    public string TruncateTitle(string title, int wordLimit)  //Function to limit the words in the description
+    {
+        if (string.IsNullOrEmpty(title))
+        {
+            return string.Empty;
+        }
+
+        var words = title.Split(' ');
+        if (words.Length <= wordLimit)
+        {
+            return title;
         }
 
         return string.Join(' ', words.Take(wordLimit)) + "...";
