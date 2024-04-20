@@ -17,10 +17,11 @@
             <button type="button" class="btn btn-outline-info" onclick="searchByCategory('technology')">Technology</button>
         </div>
 
-        <form method="get">
+        <form method="get" onsubmit="return formValidation()">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Search..." name="query">
                 <button class="btn btn-primary" type="submit">Search</button>
+                <div class="invalid-feedback">Please enter only letters and numbers.</div>
             </div>
         </form>
 
@@ -36,27 +37,27 @@
 
                         for (int i = 0; i < pageCount; i++)
                         {
-                            <div class="carousel-item @(isFirst ? "active" : "")">
-                                <div class="row">
-                                    @for (int j = i * articlesPerPage; j < Math.Min((i + 1) * articlesPerPage, totalArticles); j++)
+                                                    <div class="carousel-item @(isFirst ? "active" : "")">
+                                                        <div class="row">
+                                                            @for (int j = i * articlesPerPage; j < Math.Min((i + 1) * articlesPerPage, totalArticles); j++)
                                     {
                                         var article = Model.NewsArticles.Articles[j];
                                         if (!string.IsNullOrEmpty(article.UrlToImage) && !string.IsNullOrEmpty(article.Title) && !string.IsNullOrEmpty(article.Description) && !string.IsNullOrEmpty(article.Url))
                                         {
-                                            <div class="col-lg-3">
-                                                <div class="card mb-4">
-                                                    <img src="@article.UrlToImage" class="card-img-top" alt="@article.Title">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">@TruncateTitle(article.Title, 10)</h5>
-                                                        <p class="card-text">@TruncateDescription(article.Description, 10)</p>
-                                                        <a href="@article.Url" class="btn btn-primary" target="_blank">Read more</a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                                    <div class="col-lg-3">
+                                                                        <div class="card mb-4">
+                                                                            <img src="@article.UrlToImage" class="card-img-top" alt="@article.Title">
+                                                                            <div class="card-body">
+                                                                                <h5 class="card-title">@TruncateTitle(article.Title, 10)</h5>
+                                                                                <p class="card-text">@TruncateDescription(article.Description, 10)</p>
+                                                                                <a href="@article.Url" class="btn btn-primary" target="_blank">Read more</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                         }
                                     }
-                                </div>
-                            </div>
+                                                        </div>
+                                                    </div>
                             isFirst = false; // Ensures that only the first item has the 'active' class
                         }
                     }
@@ -123,5 +124,18 @@
         var queryInput = document.querySelector('input[name="query"]');
         queryInput.value = category;
         document.querySelector('form').submit();
+    }
+</script>
+
+<script>
+    //Function for Input Validation
+    function formValidation() {
+        var queryInput = document.querySelector('input[name=query]');
+        var regex = /^[a-zA-Z0-9\s]*$/; //Regex to limit the search to letters and numbers.
+        if (!regex.test(queryInput.value.trim())) {
+            queryInput.classList.add('is-invalid');
+            return false;
+        }
+        return true;
     }
 </script>
