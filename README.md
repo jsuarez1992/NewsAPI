@@ -18,7 +18,7 @@ This is a web application built with .NET6 Razor Pages, and uses the [News API](
 - **Date Search:** Using a date picker to allow users to select news from their date of preference.
 - **Authorization/Authentication Login:** Like my old project FormWizard (demo in profile), add user login so they can have a curated feed based on interest. 
 - **Testing:** Created curated test for specific parts of the code before deployment.
-- - **Deployment:** First version of the wevsite goes live after all test are passed.
+- **Deployment:** First version of the wevsite goes live after all test are passed.
 
 ## Languages and Technologies Used
 
