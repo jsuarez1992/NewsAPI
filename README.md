@@ -2,9 +2,9 @@
 
 This is a web application built with .NET6 Razor Pages, and uses the [News API](https://newsapi.org) and the [AdminkitUI](https://adminkit.io/) template with Bootstrap 5 as a base . Users can search for news articles based on keywords and navigate through paginated results.
 
-# VIDEO DEMO
+## VIDEO DEMO
 
-<iframe src="https://drive.google.com/file/d/1eBZkpQwRQyvlIgkg748YKsf1CJznAjYI/preview" width="640" height="480" allow="autoplay"></iframe>
+<iframe src="https://drive.google.com/file/d/1eBZkpQwRQyvlIgkg748YKsf1CJznAjYI/preview" width="640" height="480" allow="autoplay; muted"></iframe>
 
 
 ## Features
