@@ -4,7 +4,7 @@ This is a web application built with .NET6 Razor Pages, and uses the [News API](
 
 ## VIDEO DEMO
 
-https://github.com/jsuarez1992/NewsAPI/assets/92160641/951c7e75-58f2-461a-ad13-76071d5317fc
+https://github.com/jsuarez1992/NewsAPI/assets/92160641/8aed66d1-b826-4a3c-a4bc-f748f851fe46
 
 
 ## Features
