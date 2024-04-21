@@ -30,7 +30,8 @@ This is a web application built with .NET6 Razor Pages, and uses the [News API](
 
 ## Getting Started
 
-- Clone the repository  
+- Clone the repository
+- Install Visual Studio. Make sure to select .NET version 6.0.321 during the installation process, otherwise there will be file conflicts.  
 - Open Visual Studio  
 - Select "File/Open/Project/Solution"  
 - Select "NEWFLASH.sln"  
