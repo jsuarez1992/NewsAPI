@@ -4,7 +4,7 @@
     ViewData["Title"] = "Home page";
 }
 
-<div style="padding-left: 80px; padding-right: 80px;">
+<div style="padding-left: 6%; padding-right: 6%;">
     <div class="text-center text-xxl-center">
         <h1 class="display-5 text-primary fw-light mb-3">WORLD WIDE NEWS</h1>
         <div class="btn-group mb-3" role="group" aria-label="Category Buttons">
@@ -18,7 +18,7 @@
         </div>
 
         <form method="get" onsubmit="return formValidation()">
-            <div class="input-group mb-3">
+            <div class="input-group mb-3" style="padding-left: 15%; padding-right: 15%;">
                 <input type="text" class="form-control" placeholder="Search..." name="query">
                 <button class="btn btn-primary" type="submit">Search</button>
                 <div class="invalid-feedback">Invalid search. Only letters and numbers allowed.</div>
@@ -37,27 +37,27 @@
 
                         for (int i = 0; i < pageCount; i++)
                         {
-                                                    <div class="carousel-item @(isFirst ? "active" : "")">
-                                                        <div class="row">
-                                                            @for (int j = i * articlesPerPage; j < Math.Min((i + 1) * articlesPerPage, totalArticles); j++)
+                            <div class="carousel-item @(isFirst ? "active" : "")">
+                                <div class="row">
+                                    @for (int j = i * articlesPerPage; j < Math.Min((i + 1) * articlesPerPage, totalArticles); j++)
                                     {
                                         var article = Model.NewsArticles.Articles[j];
                                         if (!string.IsNullOrEmpty(article.UrlToImage) && !string.IsNullOrEmpty(article.Title) && !string.IsNullOrEmpty(article.Description) && !string.IsNullOrEmpty(article.Url))
                                         {
-                                                                    <div class="col-lg-3">
-                                                                        <div class="card mb-4">
-                                                                            <img src="@article.UrlToImage" class="card-img-top" alt="@article.Title">
-                                                                            <div class="card-body">
-                                                                                <h5 class="card-title">@TruncateTitle(article.Title, 10)</h5>
-                                                                                <p class="card-text">@TruncateDescription(article.Description, 10)</p>
-                                                                                <a href="@article.Url" class="btn btn-primary" target="_blank">Read more</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                            <div class="col-lg-3">
+                                                <div class="card mb-4">
+                                                    <img src="@article.UrlToImage" class="card-img-top" alt="@article.Title">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">@TruncateTitle(article.Title, 10)</h5>
+                                                        <p class="card-text">@TruncateDescription(article.Description, 10)</p>
+                                                        <a href="@article.Url" class="btn btn-primary" target="_blank">Read more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         }
                                     }
-                                                        </div>
-                                                    </div>
+                                </div>
+                            </div>
                             isFirst = false; // Ensures that only the first item has the 'active' class
                         }
                     }
@@ -107,6 +107,7 @@
 
         return string.Join(' ', words.Take(wordLimit)) + "...";
     }
+
 }
 
 
