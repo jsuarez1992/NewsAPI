@@ -1,23 +1,25 @@
 # RDI TASK - NEWS 
 
-This is a web application built with .NET6, and uses the [News API](https://newsapi.org). Users can search for news articles based on keywords and navigate through paginated results.
+This is a web application built with .NET6 Razor Pages, and uses the [News API](https://newsapi.org) and the [AdminkitUI](https://adminkit.io/) template with Bootstrap 5 as a base . Users can search for news articles based on keywords and navigate through paginated results.
 
 ## Features
 
-- **Display:** The current news are displayed to the user in an interactive way.  
-- **xxx:** Users are able to go straight to the news source by clicking any of the cards.
+- **Display:** The current news are displayed to the user in an interactive way. Users are able to go straight to the news source by clicking any of the cards.
 - **Category display:** User can select the category he is interested and see all the news relevant for that field.  
 - **Search by source:** User can search news from sites like BBC, CNN, and so on.  
 - **Search by keyword:** User can search news related to a certain topic like "agriculture", "eclipse" and so on.
-- **Responsive Design:** The app is responsive and works well on both desktop and mobile devices.  
+- **Responsive Design:** The app is responsive and works well on both desktop and large screen devices.
+- **Input Validation:** Using REGEX to limit the search to only alphanumeric characters.
+- **Error Handling:** Catch error for different HTTP requests.
+- **API key / Configuration management:** Follow best practices using "appsetings.json" and "IConfiguration" to handle API request, and hiding the key using dotnet user-secrets
 
 ## Languages and Technologies Used
 
-- **C#:** xxxx
-- **CSS:** xxxx
-- **HTML:** xxxx
-- **Bootstrap:** xxxx
-- **News API:** xxxx
+- **C#**  
+- **CSS** 
+- **HTML** 
+- **Bootstrap** 
+- **News API** 
 
 ## Getting Started
 
