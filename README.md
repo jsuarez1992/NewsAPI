@@ -47,7 +47,9 @@ After doing this, the next step is to configure your API. This can be done follo
 - Select "Open in Terminal"  
 -Make sure to have installed dotnet secrets with this command:
 
-dotnet tool install --global DotNetCore.UserSecrets.Tool
+```
+dotnet tool install --global DotNetCore.UserSecrets.Tool  
+```
 
 - Add your API using this command:  
 
