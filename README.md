@@ -53,7 +53,9 @@ dotnet tool install --global DotNetCore.UserSecrets.Tool
 
 - Add your API using this command:  
 
-dotnet user-secrets set "NewsApi:ApiKey" "your-api-key-here"  
+```
+dotnet user-secrets set "NewsApi:ApiKey" "your-api-key-here"
+```
 
 - Make sure the changes are done correctly by running
 
