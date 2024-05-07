@@ -16,6 +16,7 @@ https://github.com/jsuarez1992/NewsAPI/assets/92160641/8aed66d1-b826-4a3c-a4bc-f
 - **Responsive Design:** The app is responsive and works well on both desktop and large screen devices.
 - **Input Validation:** Using REGEX to limit the search to only alphanumeric characters.
 - **Error Handling:** Catch error for different HTTP requests.
+- **Unit Tests:** GetLatestNewsAsync is tested to ensure that the application returns valid data.  
 - **API key / Configuration management:** Follow best practices using "appsetings.json" and "IConfiguration" to handle API request, and hiding the key using dotnet user-secrets  
 
 ## What´s next?
