@@ -19,7 +19,8 @@
 
         <form method="get" onsubmit="return formValidation()">
             <div class="input-group mb-3" style="padding-left: 15%; padding-right: 15%;">
-                <input type="text" class="form-control" placeholder="Search..." name="query">
+                <input type="text" class="form-control" asp-for="Query" placeholder="Search...">
+                <input type="date" class="form-control date-input" asp-for="DateFilter" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy-mm-dd">
                 <button class="btn btn-primary" type="submit">Search</button>
                 <div class="invalid-feedback">Invalid search. Only letters and numbers allowed.</div>
             </div>
@@ -118,6 +119,8 @@
 </style>
 
 <script src="~/js/app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 
 <script>
     // Function for Category Search
@@ -132,11 +135,19 @@
     //Function for Input Validation
     function formValidation() {
         var queryInput = document.querySelector('input[name=query]');
-        var regex = /^[a-zA-Z0-9\s]*$/; //Regex to limit the search to letters and numbers.
+        var regex = /^[a-zA-Z0-9\s\/\-]*$/; //Regex to limit the search to letters, numbers and "/" "-" for search parameters.
         if (!regex.test(queryInput.value.trim())) {
             queryInput.classList.add('is-invalid');
             return false;
         }
         return true;
     }
+</script>
+
+<script>
+    flatpickr('.date-input', {
+        enableTime: false, // Disable time selection if you only need date
+        dateFormat: "Y-m-d", // Date format
+        // Add any other options you need
+    });
 </script>

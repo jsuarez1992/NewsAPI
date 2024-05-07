@@ -72,6 +72,27 @@ namespace NEWFLASH.Services
             });
             return newsApiResponse;
         }
+        public async Task<NewsApiResponse> SearchNewsByExactDateAsync(string query, DateTime startDate)
+        {
+            var apiKey = _configuration["NewsApi:ApiKey"];
+            // Format the date to start at the beginning of the day
+            string formattedDate = startDate.ToString("yyyy-MM-dd");
+
+            string apiUrl = $"https://newsapi.org/v2/everything?q={query}&from={formattedDate}&to={formattedDate}&apiKey={apiKey}";
+
+            var request = new HttpRequestMessage(HttpMethod.Get, apiUrl);
+            request.Headers.Add("User-Agent", "NEWFLASH-NewsClient/1.0");
+
+            var response = await _httpClient.SendAsync(request);
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException($"News API request failed with status code {response.StatusCode} and content: {await response.Content.ReadAsStringAsync()}");
+            }
+
+            var content = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<NewsApiResponse>(content);
+        }
+
 
 
         // Define your models here
