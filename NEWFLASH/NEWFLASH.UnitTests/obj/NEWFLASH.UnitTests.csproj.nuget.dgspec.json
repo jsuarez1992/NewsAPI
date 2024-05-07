@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\c151159\\Desktop\\PORTFOLIO_JESSICA\\NEWFLASH\\NEWFLASH\\NEWFLASH.csproj": {}
+    "C:\\Users\\c151159\\Desktop\\PORTFOLIO_JESSICA\\NEWFLASH\\NEWFLASH\\NEWFLASH.UnitTests\\NEWFLASH.UnitTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\c151159\\Desktop\\PORTFOLIO_JESSICA\\NEWFLASH\\NEWFLASH\\NEWFLASH.csproj": {
+    "C:\\Users\\c151159\\Desktop\\PORTFOLIO_JESSICA\\NEWFLASH\\NEWFLASH\\NEWFLASH.UnitTests\\NEWFLASH.UnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\c151159\\Desktop\\PORTFOLIO_JESSICA\\NEWFLASH\\NEWFLASH\\NEWFLASH.csproj",
-        "projectName": "NEWFLASH",
-        "projectPath": "C:\\Users\\c151159\\Desktop\\PORTFOLIO_JESSICA\\NEWFLASH\\NEWFLASH\\NEWFLASH.csproj",
+        "projectUniqueName": "C:\\Users\\c151159\\Desktop\\PORTFOLIO_JESSICA\\NEWFLASH\\NEWFLASH\\NEWFLASH.UnitTests\\NEWFLASH.UnitTests.csproj",
+        "projectName": "NEWFLASH.UnitTests",
+        "projectPath": "C:\\Users\\c151159\\Desktop\\PORTFOLIO_JESSICA\\NEWFLASH\\NEWFLASH\\NEWFLASH.UnitTests\\NEWFLASH.UnitTests.csproj",
         "packagesPath": "C:\\Users\\c151159\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\c151159\\Desktop\\PORTFOLIO_JESSICA\\NEWFLASH\\NEWFLASH\\obj\\",
+        "outputPath": "C:\\Users\\c151159\\Desktop\\PORTFOLIO_JESSICA\\NEWFLASH\\NEWFLASH\\NEWFLASH.UnitTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -45,17 +45,25 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Moq": {
+            "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[4.20.70, )"
+              "version": "[17.1.0, )"
             },
-            "Newtonsoft.Json": {
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[13.0.3, )"
+              "version": "[3.1.2, )"
             },
             "xunit": {
               "target": "Package",
-              "version": "[2.8.0, )"
+              "version": "[2.4.1, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.3, )"
             }
           },
           "imports": [
@@ -69,9 +77,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
